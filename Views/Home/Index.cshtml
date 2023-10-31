@@ -1,0 +1,10 @@
+﻿@model IEnumerable<kifaro.Models.User>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (var item in Model.OrderByDescending(x => x.ID))
+{
+    <h2><a href="wishlists/kirascorner?user=@Html.DisplayFor(modelItem => item.ID)">@Html.DisplayFor(modelItem => item.Name)s Ønskeliste</a></h2>
+}

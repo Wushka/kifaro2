@@ -1,0 +1,35 @@
+﻿@model IEnumerable<kifaro.Models.Wish>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h3>@ViewData["UserName"]s Ønsker</h3>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(x => x.Rank))
+        {
+            <tr>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Url)" target=blank>@Html.DisplayFor(modelItem => item.Name) </a><br />
+                    ca. @Html.DisplayFor(modelItem => item.Price) DKR
+                </td>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Url)" target=blank>
+                        <img class="wishlistitem" src="@Html.DisplayFor(modelItem => item.PictureUrl)" />
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID" asp-route-user="@item.UserID">Details</a>
+                </td>
+            </tr>
+        }
+
+</table>

@@ -1,0 +1,11 @@
+﻿@model kifaro.Models.User
+@{
+    ViewData["Title"] = "Wish List";
+}
+
+@{
+    <h1>@Html.DisplayFor(cur => cur.Name)</h1>
+    <a href="/wishes?user=@Html.DisplayFor(cur => cur.ID)">Ønske Liste</a><br />
+    <a href="/wishes/Create?user=@Html.DisplayFor(cur => cur.ID)">Tilføj Ønske</a><br />
+    <a href="/wishes/rankwishes?user=@Html.DisplayFor(cur => cur.ID)">Ranger Ønsker</a>
+}

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<kifaro.Models.Wish>
+
+@{
+    var w1 = Model.ToList()[0];
+    var w2 = Model.ToList()[1];
+}
+
+<tbody>
+    <tr>
+        <td>
+            <a asp-action="UpdateScores" asp-route-user1WonMatch="true" asp-route-w1_id="@w1.ID" asp-route-w2_id="@w2.ID">
+               <img class="wishlistitem" src="@Html.DisplayFor(modelItem => w1.PictureUrl)" />
+             </a>
+        </td>
+        <td>
+            <a asp-action="UpdateScores" asp-route-user1WonMatch="false" asp-route-w2_id="@w2.ID" asp-route-w1_id="@w1.ID">
+                 <img class="wishlistitem" src="@Html.DisplayFor(modelItem => w2.PictureUrl)" />
+            </a>
+        </td>
+    </tr>
+</tbody>
+<br />
+<a href="/wishlists/kirascorner?user=@w1.UserID">Back to Index</a>
