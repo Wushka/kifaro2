@@ -176,8 +176,8 @@ namespace kifaro.Controllers
 
         public async Task<IActionResult> UpdateScores(int w1_id, int w2_id, bool user1WonMatch, int diff = 300, int kFactor = 24)
         {
-            Wish? w1 = _context.Wish.SingleOrDefault(m => m.ID == w1_id);
-            Wish? w2 = _context.Wish.SingleOrDefault(m => m.ID == w2_id);
+            Wish? w1 = await _context.Wish.SingleOrDefaultAsync(m => m.ID == w1_id);
+            Wish? w2 = await _context.Wish.SingleOrDefaultAsync(m => m.ID == w2_id);
             var i = _context.Wish.Count();
             double est1 = 1 / Convert.ToDouble(1 + 10 ^ (w2.Rank - w1.Rank) / diff);
             double est2 = 1 / Convert.ToDouble(1 + 10 ^ (w1.Rank - w2.Rank) / diff);
